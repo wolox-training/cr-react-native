@@ -1,30 +1,31 @@
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { COLORS } from '@constants/colors';
+import { FONTS } from '@constants/fonts';
 
 interface Styles {
-  container: ViewStyle;
   bookCard: ViewStyle;
   dataContainer: ViewStyle;
+  textContainer: ViewStyle;
   imageBook: ImageStyle;
   title: TextStyle;
   author: TextStyle;
 }
 
+const { size } = FONTS;
+
 export default StyleSheet.create<Styles>({
-  container: {
-    flex: 1,
-    marginTop: 35
-  },
   bookCard: {
     backgroundColor: COLORS.white,
     borderRadius: 10,
     padding: 30,
-    marginBottom: 10,
-    marginHorizontal: 15
+    marginVertical: 5
   },
   dataContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start'
+  },
+  textContainer: {
+    flex: 1
   },
   imageBook: {
     height: 80,
@@ -33,11 +34,10 @@ export default StyleSheet.create<Styles>({
     marginRight: 20
   },
   title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    width: 200
+    fontSize: size.large,
+    fontWeight: 'bold'
   },
   author: {
-    fontSize: 16
+    fontSize: size.normal
   }
 });

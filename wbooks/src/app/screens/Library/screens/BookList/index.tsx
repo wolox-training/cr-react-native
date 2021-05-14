@@ -2,11 +2,13 @@ import React from 'react';
 import { View, FlatList } from 'react-native';
 import { BOOKS_MOCK } from '@constants/mockBooks';
 
-import BookData from '../BookData';
+import BookData from '../../components/BookData';
+
+import styles from './styles';
 
 const Library: React.FC = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList data={BOOKS_MOCK} renderItem={BookData} keyExtractor={item => item.id.toString()} />
     </View>
   );

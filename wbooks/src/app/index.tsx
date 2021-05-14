@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -11,7 +10,7 @@
 
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import Library from '@screens/Library';
+import Library from '@app/screens/Library/screens/BookList';
 
 const App = () => {
   return (
