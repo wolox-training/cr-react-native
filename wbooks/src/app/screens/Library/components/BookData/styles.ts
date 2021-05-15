@@ -1,6 +1,6 @@
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { COLORS } from '@constants/colors';
-import { FONTS } from '@constants/fonts';
+import { SIZE } from '@constants/fonts';
 
 interface Styles {
   bookCard: ViewStyle;
@@ -10,8 +10,6 @@ interface Styles {
   title: TextStyle;
   author: TextStyle;
 }
-
-const { size } = FONTS;
 
 export default StyleSheet.create<Styles>({
   bookCard: {
@@ -34,10 +32,10 @@ export default StyleSheet.create<Styles>({
     marginRight: 20
   },
   title: {
-    fontSize: size.large,
+    fontSize: SIZE.large,
     fontWeight: 'bold'
   },
   author: {
-    fontSize: size.normal
+    fontSize: SIZE.normal
   }
 });
