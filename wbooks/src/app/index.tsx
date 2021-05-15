@@ -10,7 +10,7 @@
 
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import Library from '@app/screens/Library/screens/BookList';
+import Library from '@screens/Library';
 
 const App = () => {
   return (
