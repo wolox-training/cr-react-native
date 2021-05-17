@@ -1,4 +1,4 @@
-import Book from '@interfaces/book';
+import Book from '@interfaces/Book';
 
 export type LibraryStackParamList = {
   Library: undefined;

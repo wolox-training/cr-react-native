@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
 import { useNavigation } from '@react-navigation/native';
-import Book from '@interfaces/book';
+import Book from '@interfaces/Book';
 
 import styles from './styles';
 
