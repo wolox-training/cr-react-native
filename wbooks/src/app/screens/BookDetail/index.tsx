@@ -1,9 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { LibraryStackParamList } from '@interfaces/navigation';
 import { RouteProp } from '@react-navigation/native';
 import Information from '@screens/BookDetail/components/Information';
+import Comments from '@screens/BookDetail/components/Comments';
 
 import styles from './styles';
 
@@ -17,9 +18,10 @@ type Props = {
 
 const BookDetail = ({ route }: Props) => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Information {...route.params} />
-    </View>
+      <Comments />
+    </ScrollView>
   );
 };
 
