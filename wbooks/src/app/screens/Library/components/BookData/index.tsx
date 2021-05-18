@@ -1,13 +1,25 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
-import Book from '@interfaces/Book';
+import { useNavigation } from '@react-navigation/native';
+import Book from '@interfaces/book';
 
 import styles from './styles';
 
-const BookData = ({ title, author, imageUrl }: Book) => {
+const BookData = ({ title, author, imageUrl, year, genre }: Book) => {
+  const navigation = useNavigation();
+
+  const navigateToBookDetail = () =>
+    navigation.navigate('BookDetail', {
+      title,
+      author,
+      imageUrl,
+      year,
+      genre
+    });
+
   return (
-    <TouchableOpacity style={styles.bookCard}>
+    <TouchableOpacity style={styles.bookCard} onPress={navigateToBookDetail}>
       <View style={styles.dataContainer}>
         <Image source={imageUrl ? { uri: imageUrl } : bcInicio} style={styles.imageBook} />
         <View style={styles.textContainer}>
