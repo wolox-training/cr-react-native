@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
+import Button from '@components/Button';
 
 import styles from './styles';
 
@@ -20,17 +21,13 @@ const Information = ({ title, author, imageUrl, year, genre }: Props) => {
         <Image source={imageUrl ? { uri: imageUrl } : bcInicio} style={styles.detailImageBook} />
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.author}>{author}</Text>
-          <Text style={styles.author}>{year}</Text>
-          <Text style={styles.author}>{genre}</Text>
+          <Text style={styles.subTitle}>{author}</Text>
+          <Text style={styles.subTitle}>{year}</Text>
+          <Text style={styles.subTitle}>{genre}</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.btnAdd}>
-        <Text style={styles.btnAddText}>ADD TO WISH LIST</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btnRent}>
-        <Text style={styles.btnRentText}>RENT</Text>
-      </TouchableOpacity>
+      <Button solid={false} text={'ADD TO WISH LIST'} />
+      <Button text={'RENT'} />
     </View>
   );
 };
