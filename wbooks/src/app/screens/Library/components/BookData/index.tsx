@@ -9,18 +9,17 @@ import styles from './styles';
 const BookData = ({ title, author, imageUrl, year, genre }: Book) => {
   const navigation = useNavigation();
 
+  const navigateToBookDetail = () =>
+    navigation.navigate('BookDetail', {
+      title,
+      author,
+      imageUrl,
+      year,
+      genre
+    });
+
   return (
-    <TouchableOpacity
-      style={styles.bookCard}
-      onPress={() =>
-        navigation.navigate('BookDetail', {
-          title,
-          author,
-          imageUrl,
-          year,
-          genre
-        })
-      }>
+    <TouchableOpacity style={styles.bookCard} onPress={navigateToBookDetail}>
       <View style={styles.dataContainer}>
         <Image source={imageUrl ? { uri: imageUrl } : bcInicio} style={styles.imageBook} />
         <View style={styles.textContainer}>

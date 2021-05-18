@@ -8,11 +8,7 @@ interface Styles {
   textContainer: ViewStyle;
   detailImageBook: ImageStyle;
   title: TextStyle;
-  author: TextStyle;
-  btnAdd: ViewStyle;
-  btnAddText: TextStyle;
-  btnRent: ViewStyle;
-  btnRentText: TextStyle;
+  subTitle: TextStyle;
 }
 
 export default StyleSheet.create<Styles>({
@@ -38,34 +34,7 @@ export default StyleSheet.create<Styles>({
     fontSize: SIZE.large,
     fontWeight: 'bold'
   },
-  author: {
+  subTitle: {
     fontSize: SIZE.normal
-  },
-  btnAdd: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    marginTop: 30,
-    paddingVertical: 12,
-    borderRadius: 30,
-    width: '90%',
-    borderColor: COLORS.primary,
-    borderWidth: 2
-  },
-  btnAddText: {
-    fontWeight: 'bold',
-    color: COLORS.primary
-  },
-  btnRent: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-    paddingVertical: 12,
-    borderRadius: 30,
-    width: '90%',
-    backgroundColor: COLORS.primary
-  },
-  btnRentText: {
-    fontWeight: 'bold',
-    color: COLORS.white
   }
 });
