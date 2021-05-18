@@ -1,24 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { LibraryStackParamList } from '@interfaces/navigation';
-import { RouteProp } from '@react-navigation/native';
-import Information from '@screens/BookDetail/components/Information';
+import { View, Text } from 'react-native';
 
 import styles from './styles';
 
-type ProfileScreenNavigationProp = StackNavigationProp<LibraryStackParamList, 'BookDetail'>;
-type ProfileScreenRouteProp = RouteProp<LibraryStackParamList, 'BookDetail'>;
-
-type Props = {
-  route: ProfileScreenRouteProp;
-  navigation: ProfileScreenNavigationProp;
-};
-
-const BookDetail = ({ route }: Props) => {
+const BookDetail = () => {
   return (
     <View style={styles.container}>
-      <Information {...route.params} />
+      <Text>Book Detail</Text>
     </View>
   );
 };
