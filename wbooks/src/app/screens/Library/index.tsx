@@ -8,9 +8,12 @@ import styles from './styles';
 
 const Library = () => {
   const renderItem: ListRenderItem<Book> = ({ item }) => <BookData {...item} />;
+
+  const keyExtractor = (item: Book) => item.id.toString();
+
   return (
     <View style={styles.container}>
-      <FlatList data={BOOKS_MOCK} renderItem={renderItem} keyExtractor={item => item.id.toString()} />
+      <FlatList data={BOOKS_MOCK} renderItem={renderItem} keyExtractor={keyExtractor} />
     </View>
   );
 };
