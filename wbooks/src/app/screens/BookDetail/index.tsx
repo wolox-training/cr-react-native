@@ -1,10 +1,12 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, ListRenderItem, TouchableOpacity, Text } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { LibraryStackParamList } from '@interfaces/navigation';
 import { RouteProp } from '@react-navigation/native';
 import Information from '@screens/BookDetail/components/Information';
-import Comments from '@screens/BookDetail/components/Comments';
+import { COMMENTS_MOCK } from '@constants/mockComments';
+import TableComments from '@app/screens/BookDetail/components/TableComments';
+import Comment from '@interfaces/comment';
 
 import styles from './styles';
 
@@ -17,11 +19,32 @@ type Props = {
 };
 
 const BookDetail = ({ route }: Props) => {
+  const [mock, setMock] = useState(COMMENTS_MOCK.filter(comment => comment.id < 2));
+
+  const onPressViewAll = () => setMock(COMMENTS_MOCK);
+
+  const Footer = () => (
+    <TouchableOpacity onPress={onPressViewAll}>
+      <Text style={styles.viewAll}>View All</Text>
+    </TouchableOpacity>
+  );
+
+  const renderItem: ListRenderItem<Comment> = ({ item }) => <TableComments {...item} />;
+
+  const keyExtractor = (item: Comment) => item.id.toString();
+
   return (
-    <ScrollView style={styles.container}>
-      <Information {...route.params} />
-      <Comments />
-    </ScrollView>
+    <FlatList
+      style={styles.container}
+      ListHeaderComponentStyle={styles.header}
+      ListHeaderComponent={<Information {...route.params} />}
+      data={mock}
+      extraData={mock}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      ListFooterComponentStyle={styles.footer}
+      ListFooterComponent={Footer}
+    />
   );
 };
 

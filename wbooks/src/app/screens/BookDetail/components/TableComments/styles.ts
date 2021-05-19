@@ -9,20 +9,19 @@ interface Styles {
   textContainer: TextStyle;
   author: TextStyle;
   text: TextStyle;
-  viewAll: TextStyle;
 }
 
 export default StyleSheet.create<Styles>({
   commentCard: {
-    marginTop: 10,
     backgroundColor: COLORS.white,
-    borderRadius: 10,
-    padding: 30
+    padding: 20,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    marginBottom: -10
   },
   comment: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20
+    alignItems: 'center'
   },
   image: {
     marginRight: 20
@@ -36,11 +35,5 @@ export default StyleSheet.create<Styles>({
   },
   text: {
     fontSize: SIZE.small
-  },
-  viewAll: {
-    fontSize: SIZE.normal,
-    color: COLORS.primary,
-    fontWeight: 'bold',
-    alignSelf: 'center'
   }
 });
