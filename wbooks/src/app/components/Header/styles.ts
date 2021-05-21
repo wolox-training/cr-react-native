@@ -11,7 +11,7 @@ export default StyleSheet.create<Styles>({
   container: {
     resizeMode: 'stretch',
     width,
-    height: Platform.OS === 'ios' ? 80 : 70,
+    height: Platform.OS === 'ios' ? '115%' : 70,
     backgroundColor: COLORS.lightBlue
   }
 });
