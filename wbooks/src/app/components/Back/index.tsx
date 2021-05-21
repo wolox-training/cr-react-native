@@ -1,8 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import icBack from '@assets/NavigationBar/ic_back.png';
-
-import styles from './styles';
+import IconHeader from '@app/components/Header/components/IconHeader';
 
 interface Props {
   goLibrary: () => void;
@@ -10,7 +9,7 @@ interface Props {
 
 const Back = ({ goLibrary }: Props) => (
   <TouchableOpacity onPress={goLibrary}>
-    <Image source={icBack} style={styles.container} />
+    <IconHeader icon={icBack} right={false} />
   </TouchableOpacity>
 );
 
