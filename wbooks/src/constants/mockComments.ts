@@ -2,7 +2,7 @@ export const COMMENTS_MOCK = [
   {
     id: 0,
     author: 'Emmie Thiel',
-    text: 'It was great to see you again earlier. Let’s definitely get that coffe It was great to see you again earlier.',
+    text: 'It was great to see you again earlier.',
     url: null
   },
   {
