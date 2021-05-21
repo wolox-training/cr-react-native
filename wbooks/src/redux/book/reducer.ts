@@ -1,11 +1,27 @@
+import { actions } from './actions';
+
 const initialState = {
-  books: []
+  isFetching: false,
+  books: [],
+  error: ''
 };
 
 const booksReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case 'GET_BOOKS':
-      return { ...state, books: action.payload };
+    case actions.GET_BOOKS:
+      return { ...state, isFetching: true };
+    case actions.GET_BOOKS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        books: action.payload
+      };
+    case actions.GET_BOOKS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
     default:
       return state;
   }

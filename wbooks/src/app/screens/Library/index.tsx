@@ -3,7 +3,7 @@ import { View, FlatList, ListRenderItem } from 'react-native';
 import BookData from '@screens/Library/components/BookData';
 import Book from '@interfaces/book';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBooks } from '@redux/book/actions';
+import actionCreators from '@redux/book/actions';
 
 import styles from './styles';
 
@@ -15,7 +15,7 @@ const Library = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBooks());
+    dispatch(actionCreators.getBooks());
   }, [dispatch]);
 
   const books = useSelector((state: RootState) => state.books);
