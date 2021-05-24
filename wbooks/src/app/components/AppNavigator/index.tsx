@@ -41,7 +41,7 @@ function AppNavigator() {
             headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
             headerBackground: () => <Header />,
             headerLeft: () => (
-              <IconHeader icon={icBack} right={false} onPressIcon={() => navigation.navigate('Library')} />
+              <IconHeader icon={icBack} right={false} onPressIcon={() => navigation.goBack()} />
             )
           })}
         />
