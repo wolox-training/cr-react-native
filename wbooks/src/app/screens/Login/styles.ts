@@ -8,6 +8,7 @@ interface Styles {
   formInput: ViewStyle;
   loginBtn: ViewStyle;
   textLoginBtn: TextStyle;
+  errorMessage: TextStyle;
 }
 
 export default StyleSheet.create<Styles>({
@@ -17,7 +18,7 @@ export default StyleSheet.create<Styles>({
     padding: 35
   },
   formContainer: {
-    marginBottom: 30
+    marginTop: 25
   },
   formTitle: {
     fontSize: 16,
@@ -35,10 +36,15 @@ export default StyleSheet.create<Styles>({
     alignItems: 'center',
     padding: 12,
     borderRadius: 30,
-    marginTop: 30
+    marginTop: 60
   },
   textLoginBtn: {
     color: COLORS.white,
     fontSize: 18
+  },
+  errorMessage: {
+    alignSelf: 'flex-end',
+    marginRight: 20,
+    color: COLORS.error
   }
 });
