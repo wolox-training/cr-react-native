@@ -6,9 +6,9 @@ import Library from '@app/screens/Library';
 import BookDetail from '@app/screens/BookDetail';
 import { LibraryStackParamList } from '@interfaces/navigation';
 import Header from '@components/Header';
-import Back from '@components/Back';
 import IconHeader from '@app/components/Header/components/IconHeader';
 import icSearch from '@assets/NavigationBar/ic_search.png';
+import icBack from '@assets/NavigationBar/ic_back.png';
 import icNotification from '@assets/NavigationBar/ic_notifications.png';
 
 const LibraryStack = createStackNavigator<LibraryStackParamList>();
@@ -40,7 +40,9 @@ function AppNavigator() {
             title: 'BOOK DETAIL',
             headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
             headerBackground: () => <Header />,
-            headerLeft: () => <Back goLibrary={() => navigation.navigate('Library')} />
+            headerLeft: () => (
+              <IconHeader icon={icBack} right={false} onPressIcon={() => navigation.navigate('Library')} />
+            )
           })}
         />
       </LibraryStack.Navigator>
