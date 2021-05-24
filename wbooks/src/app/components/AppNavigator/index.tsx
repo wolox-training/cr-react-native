@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Library from '@app/screens/Library';
 import BookDetail from '@app/screens/BookDetail';
+import SearchFilter from '@app/screens/SearchFilter';
 import { LibraryStackParamList } from '@interfaces/navigation';
 import Header from '@components/Header';
 import IconHeader from '@app/components/Header/components/IconHeader';
@@ -25,13 +26,15 @@ function AppNavigator() {
         <LibraryStack.Screen
           name="Library"
           component={Library}
-          options={{
+          options={({ navigation }) => ({
             title: 'LIBRARY',
             headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
             headerBackground: () => <Header />,
             headerLeft: () => <IconHeader icon={icNotification} right={false} />,
-            headerRight: () => <IconHeader icon={icSearch} />
-          }}
+            headerRight: () => (
+              <IconHeader icon={icSearch} onPressIcon={() => navigation.navigate('SearchFilter')} />
+            )
+          })}
         />
         <LibraryStack.Screen
           name="BookDetail"
@@ -43,6 +46,15 @@ function AppNavigator() {
             headerLeft: () => (
               <IconHeader icon={icBack} right={false} onPressIcon={() => navigation.navigate('Library')} />
             )
+          })}
+        />
+        <LibraryStack.Screen
+          name="SearchFilter"
+          component={SearchFilter}
+          options={({ route }) => ({
+            title: '',
+            headerBackground: () => <Header routeName={route.name} />,
+            headerLeft: () => null
           })}
         />
       </LibraryStack.Navigator>
