@@ -1,5 +1,9 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import Reactotron from '@config/reactotronConfig';
 import bookReducer from '@redux/book/reducer';
 
-export default createStore(bookReducer, Reactotron.createEnhancer());
+const rootReducer = combineReducers({
+  books: bookReducer
+});
+
+export default createStore(rootReducer, Reactotron.createEnhancer());
