@@ -9,7 +9,6 @@ interface Styles {
   container: ViewStyle;
   input: ViewStyle;
   icon: ImageStyle;
-  btnLeft: ViewStyle;
   btnRight: ViewStyle;
 }
 
@@ -18,7 +17,7 @@ export default StyleSheet.create<Styles>({
     width,
     height: Platform.OS === 'ios' ? '115%' : 70,
     paddingHorizontal: 20,
-    paddingVertical: 10
+    paddingVertical: 7
   },
   imageStyle: {
     resizeMode: 'stretch'
@@ -27,19 +26,18 @@ export default StyleSheet.create<Styles>({
     backgroundColor: COLORS.white,
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 15
+    borderRadius: 20
   },
   input: {
     flex: 1,
     height: 40,
-    fontSize: 14
+    fontSize: 14,
+    margin: 3
   },
   icon: {
     height: 20,
+    marginLeft: 12,
     width: 20
-  },
-  btnLeft: {
-    marginLeft: 12
   },
   btnRight: {
     backgroundColor: COLORS.lightBlue,

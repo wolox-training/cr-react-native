@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, ImageBackground, TextInput, Text, TouchableOpacity, Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import actionCreators from '@redux/book/actions';
 import background from '@assets/General/bc_nav_bar.png';
 import icSearch from '@assets/General/ic_search_placeholder.png';
 
@@ -9,24 +11,31 @@ interface Props {
   routeName?: any;
 }
 
+interface RootState {
+  query: string;
+}
+
 const HeaderBackground = ({ routeName }: Props) => {
-  const [query, setQuery] = useState('');
+  const dispatch = useDispatch();
+  const query = useSelector((state: RootState) => state.query);
 
   const onChangeQuery = (text: string) => {
-    setQuery(text);
+    dispatch(actionCreators.setQuery(text));
+  };
+
+  const deleteQuery = () => {
+    dispatch(actionCreators.setQuery(''));
   };
 
   if (routeName === 'SearchFilter')
     return (
       <ImageBackground source={background} style={styles.backgroundContainer} imageStyle={styles.imageStyle}>
         <View style={styles.container}>
-          <TouchableOpacity style={styles.btnLeft}>
-            <Image source={icSearch} style={styles.icon} />
-          </TouchableOpacity>
+          <Image source={icSearch} style={styles.icon} />
 
           <TextInput style={styles.input} value={query} onChangeText={value => onChangeQuery(value)} />
 
-          <TouchableOpacity style={styles.btnRight}>
+          <TouchableOpacity style={styles.btnRight} onPress={deleteQuery}>
             <Text>x</Text>
           </TouchableOpacity>
         </View>

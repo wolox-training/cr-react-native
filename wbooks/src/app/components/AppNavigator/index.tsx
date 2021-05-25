@@ -3,14 +3,14 @@ import { Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import BookList from '@app/screens/Library';
-import BookDetail from '@app/screens/BookDetail';
-import SearchFilter from '@app/screens/SearchFilter';
-import Settings from '@app/screens/Settings';
+import BookList from '@screens/Library';
+import BookDetail from '@screens/BookDetail';
+import SearchFilter from '@screens/SearchFilter';
+import Settings from '@screens/Settings';
 import { LibraryStackParamList, TabBarParamList } from '@interfaces/navigation';
 import TabBar from '@components/AppNavigator/TabBar';
 import Header from '@components/Header';
-import IconHeader from '@app/components/Header/components/IconHeader';
+import IconHeader from '@components/Header/components/IconHeader';
 import icSearch from '@assets/NavigationBar/ic_search.png';
 import icBack from '@assets/NavigationBar/ic_back.png';
 import icNotification from '@assets/NavigationBar/ic_notifications.png';
@@ -54,9 +54,7 @@ const Library = () => (
       name="SearchFilter"
       component={SearchFilter}
       options={({ route }) => ({
-        title: '',
-        headerBackground: () => <Header routeName={route.name} />,
-        headerLeft: () => null
+        header: () => <Header routeName={route.name} />
       })}
     />
   </LibraryStack.Navigator>
