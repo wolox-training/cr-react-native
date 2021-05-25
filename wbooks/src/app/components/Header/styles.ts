@@ -17,8 +17,8 @@ export default StyleSheet.create<Styles>({
   backgroundContainer: {
     width,
     height: Platform.OS === 'ios' ? '115%' : 70,
-    justifyContent: 'center',
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingVertical: 10
   },
   imageStyle: {
     resizeMode: 'stretch'
@@ -31,7 +31,8 @@ export default StyleSheet.create<Styles>({
   },
   input: {
     flex: 1,
-    height: 30
+    height: 40,
+    fontSize: 14
   },
   icon: {
     height: 20,
