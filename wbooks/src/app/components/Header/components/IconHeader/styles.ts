@@ -1,7 +1,6 @@
 import { ImageStyle, StyleSheet } from 'react-native';
-import { DIMENSIONS } from '@constants/dimensions';
 
-const { height, width } = DIMENSIONS;
+const SIZE = 25;
 
 interface Styles {
   containerLeft: ImageStyle;
@@ -11,12 +10,12 @@ interface Styles {
 export default StyleSheet.create<Styles>({
   containerLeft: {
     marginLeft: 20,
-    height,
-    width
+    height: SIZE,
+    width: SIZE
   },
   containerRight: {
     marginRight: 20,
-    height,
-    width
+    height: SIZE,
+    width: SIZE
   }
 });
