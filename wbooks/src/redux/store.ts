@@ -4,7 +4,7 @@ import Reactotron from '@config/reactotronConfig';
 import bookReducer from '@redux/book/reducer';
 
 const rootReducer = combineReducers({
-  books: bookReducer
+  book: bookReducer
 });
 
 export default createStore(rootReducer, compose(applyMiddleware(thunk), Reactotron.createEnhancer()));

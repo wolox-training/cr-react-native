@@ -8,7 +8,7 @@ import actionCreators from '@redux/book/actions';
 import styles from './styles';
 
 interface RootState {
-  books: Book[];
+  book: { books: Book[] };
 }
 
 const Library = () => {
@@ -18,7 +18,7 @@ const Library = () => {
     dispatch(actionCreators.getBooks());
   }, [dispatch]);
 
-  const books = useSelector((state: RootState) => state.books);
+  const { books } = useSelector((state: RootState) => state.book);
 
   const renderItem: ListRenderItem<Book> = ({ item }) => <BookData {...item} />;
 
