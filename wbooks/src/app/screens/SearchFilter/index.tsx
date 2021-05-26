@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { View, Image, Text } from 'react-native';
 import Book from '@interfaces/book';
 import { useSelector } from 'react-redux';
@@ -15,14 +15,11 @@ interface RootState {
 
 const SearchFilter = () => {
   const { books, query } = useSelector((state: RootState) => state);
-  const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
 
-  useEffect(() => {
-    const newBooks: Book[] | [] = books.filter(book =>
-      book.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredBooks(newBooks);
-  }, [books, query]);
+  const filteredBooks = useMemo(
+    () => books.filter(book => book.title.toLowerCase().includes(query.toLowerCase())),
+    [books, query]
+  );
 
   if (filteredBooks.length && query) return <BookList books={filteredBooks} />;
 
