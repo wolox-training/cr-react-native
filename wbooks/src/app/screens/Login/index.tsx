@@ -2,15 +2,26 @@ import React from 'react';
 import { View, ImageBackground, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import actionCreators from '@redux/auth/actions';
 import bcInicio from '@assets/General/bc_inicio.png';
 
 import styles from './styles';
 
+interface DataForm {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
   const { control, handleSubmit, errors } = useForm();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const onSubmit = () => navigation.navigate('Library');
+  const onSubmit = (data: DataForm) => {
+    dispatch(actionCreators.login(data.email, data.password));
+    navigation.navigate('Library');
+  };
 
   return (
     <ImageBackground source={bcInicio} style={styles.container}>

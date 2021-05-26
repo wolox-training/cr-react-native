@@ -10,8 +10,8 @@ import Config from 'react-native-config';
 import App from './src/app';
 
 export default function index() {
-  const qwe = Config.SECRET_VARIABLE;
-  Reactotron.log(qwe, 'sa');
+  const sVariable = Config.SECRET_VARIABLE;
+  Reactotron.log(sVariable);
 
   return <App />;
 }
