@@ -10,7 +10,7 @@ const Login = () => {
     <ImageBackground source={bcInicio} style={styles.container}>
       <Form title="Email" />
       <Form title="Password" isSecure={true} />
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn} onPress={() => console.log('submit')}>
         <Text style={styles.textLoginBtn}>Submit</Text>
       </TouchableOpacity>
     </ImageBackground>
