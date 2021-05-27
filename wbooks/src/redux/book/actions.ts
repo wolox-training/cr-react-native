@@ -14,13 +14,13 @@ const actionCreators = {
     if (response.ok) {
       dispatch({
         type: actions.GET_BOOKS_SUCCESS,
-        isFetching: false,
+        loading: false,
         payload: response.data
       });
     } else {
       dispatch({
         type: actions.GET_BOOKS_FAILURE,
-        isFetching: false,
+        loading: false,
         payload: response.error
       });
     }
