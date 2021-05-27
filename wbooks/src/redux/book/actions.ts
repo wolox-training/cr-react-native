@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { BOOKS_MOCK } from '@constants/mockBooks';
+import { getBooks } from '@services/BookService';
 
 export const actions = {
   GET_BOOKS: '@@BOOK/GET_BOOKS',
@@ -9,8 +9,8 @@ export const actions = {
 
 const actionCreators = {
   getBooks: () => async (dispatch: Dispatch) => {
-    dispatch({ type: actions.GET_BOOKS, loading: true });
-    const response = await Promise.resolve({ ok: true, data: BOOKS_MOCK, error: '' });
+    dispatch({ type: actions.GET_BOOKS, isFetching: true });
+    const response = await getBooks();
     if (response.ok) {
       dispatch({
         type: actions.GET_BOOKS_SUCCESS,
