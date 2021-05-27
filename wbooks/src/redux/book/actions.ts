@@ -8,19 +8,19 @@ export const actions = {
 };
 
 const actionCreators = {
-  getBooks: () => (dispatch: Dispatch) => {
-    dispatch({ type: actions.GET_BOOKS, isFetching: true });
-    const response = { ok: true, data: BOOKS_MOCK, error: '' };
+  getBooks: () => async (dispatch: Dispatch) => {
+    dispatch({ type: actions.GET_BOOKS, loading: true });
+    const response = await Promise.resolve({ ok: true, data: BOOKS_MOCK, error: '' });
     if (response.ok) {
       dispatch({
         type: actions.GET_BOOKS_SUCCESS,
-        isFetching: false,
+        loading: false,
         payload: response.data
       });
     } else {
       dispatch({
         type: actions.GET_BOOKS_FAILURE,
-        isFetching: false,
+        loading: false,
         payload: response.error
       });
     }

@@ -1,7 +1,7 @@
 import { actions } from './actions';
 
 const initialState = {
-  isFetching: false,
+  loading: false,
   books: [],
   error: ''
 };
@@ -9,17 +9,17 @@ const initialState = {
 const booksReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case actions.GET_BOOKS:
-      return { ...state, isFetching: true };
+      return { ...state, loading: true };
     case actions.GET_BOOKS_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        loading: false,
         books: action.payload
       };
     case actions.GET_BOOKS_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        loading: false,
         error: action.payload
       };
     default:
