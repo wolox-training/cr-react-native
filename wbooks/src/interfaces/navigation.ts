@@ -5,3 +5,8 @@ export type LibraryStackParamList = {
   Library: undefined;
   BookDetail: Book;
 };
+
+export type TabBarParamList = {
+  BookList: undefined;
+  Settings: undefined;
+};

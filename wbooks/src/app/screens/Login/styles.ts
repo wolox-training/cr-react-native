@@ -3,9 +3,6 @@ import { COLORS } from '@constants/colors';
 
 interface Styles {
   container: ViewStyle;
-  formContainer: ViewStyle;
-  formTitle: TextStyle;
-  formInput: ViewStyle;
   loginBtn: ViewStyle;
   textLoginBtn: TextStyle;
   errorMessage: TextStyle;
@@ -16,18 +13,6 @@ export default StyleSheet.create<Styles>({
     flex: 1,
     justifyContent: 'center',
     padding: 35
-  },
-  formContainer: {
-    marginTop: 25
-  },
-  formTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 7
-  },
-  formInput: {
-    backgroundColor: COLORS.white,
-    borderRadius: 10
   },
   loginBtn: {
     backgroundColor: COLORS.transparent,

@@ -15,7 +15,8 @@ export default StyleSheet.create<Styles>({
   bookCard: {
     backgroundColor: COLORS.white,
     borderRadius: 10,
-    padding: 30
+    padding: 30,
+    marginTop: 12
   },
   dataContainer: {
     flexDirection: 'row',
