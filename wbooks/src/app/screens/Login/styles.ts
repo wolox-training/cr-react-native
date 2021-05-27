@@ -27,7 +27,8 @@ export default StyleSheet.create<Styles>({
   },
   formInput: {
     backgroundColor: COLORS.white,
-    borderRadius: 10
+    borderRadius: 10,
+    height: 45
   },
   loginBtn: {
     backgroundColor: COLORS.transparent,
