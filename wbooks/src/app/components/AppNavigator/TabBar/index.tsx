@@ -20,7 +20,7 @@ const TabBar = ({ focused, route }: Props) => {
 
   const setImageWithRoute = () => {
     switch (route.name) {
-      case 'Library':
+      case 'BookList':
         setImage(icLibrary);
         setImageActive(icLibraryActive);
         break;
