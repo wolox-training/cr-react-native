@@ -18,7 +18,7 @@ const Library = () => {
     dispatch(actionCreators.getBooks());
   }, [dispatch]);
 
-  const { books } = useSelector((state: RootState) => state.book);
+  const books = useSelector((state: RootState) => state.book.books);
 
   const renderItem: ListRenderItem<Book> = ({ item }) => <BookData {...item} />;
 
