@@ -6,12 +6,18 @@ if (__DEV__) {
 import Reactotron from 'reactotron-react-native';
 import React from 'react';
 import Config from 'react-native-config';
+import { Provider } from 'react-redux';
 
+import store from './src/redux/store';
 import App from './src/app';
 
 export default function index() {
-  const qwe = Config.SECRET_VARIABLE;
-  Reactotron.log(qwe, 'sa');
+  const sv = Config.SECRET_VARIABLE;
+  Reactotron.log(sv);
 
-  return <App />;
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 }
