@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, ImageBackground, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
+import { ImageBackground, Text, TouchableOpacity } from 'react-native';
+import Form from '@screens/Login/components/Form';
 import bcInicio from '@assets/General/bc_inicio.png';
 
 import styles from './styles';
@@ -17,18 +18,7 @@ const Login = () => {
       <Controller
         name="email"
         control={control}
-        render={({ onChange, value }) => (
-          <View>
-            <Text style={styles.formTitle}>Email</Text>
-            <TextInput
-              style={styles.formInput}
-              onChangeText={text => onChange(text)}
-              value={value}
-              maxLength={25}
-              autoCapitalize="none"
-            />
-          </View>
-        )}
+        render={({ onChange, value }) => <Form title="Email" value={value} onChange={onChange} />}
         rules={{
           required: { value: true, message: 'Campo requerido' },
           validate: value =>
@@ -43,16 +33,7 @@ const Login = () => {
         name="password"
         control={control}
         render={({ onChange, value }) => (
-          <View style={styles.formContainer}>
-            <Text style={styles.formTitle}>Contraseña</Text>
-            <TextInput
-              style={styles.formInput}
-              onChangeText={text => onChange(text)}
-              value={value}
-              maxLength={25}
-              secureTextEntry
-            />
-          </View>
+          <Form title="Password" value={value} onChange={onChange} isSecure={true} />
         )}
         rules={{
           required: { value: true, message: 'Campo requerido' },
@@ -63,7 +44,7 @@ const Login = () => {
       {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
 
       <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit(onSubmit)}>
-        <Text style={styles.textLoginBtn}>Ingresar</Text>
+        <Text style={styles.textLoginBtn}>Submit</Text>
       </TouchableOpacity>
     </ImageBackground>
   );
