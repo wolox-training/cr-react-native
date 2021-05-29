@@ -1,5 +1,7 @@
 import { login } from '@services/AuthService';
-import { createTypes, completeTypes } from 'redux-recompose';
+import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Reactotron from 'reactotron-react-native';
 
 const completedActions = completeTypes({ primaryActions: ['LOGIN'] });
 
@@ -10,7 +12,17 @@ const actionCreators = {
     type: actions.LOGIN,
     target: 'user',
     service: login,
-    payload: { email, password }
+    payload: { email, password },
+    injections: [
+      withPostSuccess(async (dispatch: any, response: any) => {
+        try {
+          const jsonValue = JSON.stringify(response.data);
+          await AsyncStorage.setItem('authData', jsonValue);
+        } catch (e) {
+          if (__DEV__) Reactotron.log('Error storage');
+        }
+      })
+    ]
   })
 };
 
