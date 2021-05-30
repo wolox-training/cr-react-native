@@ -14,6 +14,11 @@ import IconHeader from '@app/components/Header/components/IconHeader';
 import icSearch from '@assets/NavigationBar/ic_search.png';
 import icBack from '@assets/NavigationBar/ic_back.png';
 import icNotification from '@assets/NavigationBar/ic_notifications.png';
+import { useSelector } from 'react-redux';
+
+interface RootState {
+  auth: { currentUser: string };
+}
 
 const Tab = createBottomTabNavigator<TabBarParamList>();
 const LibraryStack = createStackNavigator<LibraryStackParamList>();
@@ -29,6 +34,8 @@ const Library = () => (
 );
 
 function AppNavigator() {
+  const { currentUser } = useSelector((state: RootState) => state.auth);
+
   return (
     <NavigationContainer>
       <LibraryStack.Navigator
@@ -37,30 +44,35 @@ function AppNavigator() {
             color: 'white'
           }
         }}>
-        <LibraryStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <LibraryStack.Screen
-          name="Library"
-          component={Library}
-          options={{
-            title: 'LIBRARY',
-            headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
-            headerBackground: () => <Header />,
-            headerLeft: () => <IconHeader icon={icNotification} right={false} />,
-            headerRight: () => <IconHeader icon={icSearch} />
-          }}
-        />
-        <LibraryStack.Screen
-          name="BookDetail"
-          component={BookDetail}
-          options={({ navigation }) => ({
-            title: 'BOOK DETAIL',
-            headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
-            headerBackground: () => <Header />,
-            headerLeft: () => (
-              <IconHeader icon={icBack} right={false} onPressIcon={() => navigation.goBack()} />
-            )
-          })}
-        />
+        {currentUser ? (
+          <>
+            <LibraryStack.Screen
+              name="Library"
+              component={Library}
+              options={{
+                title: 'LIBRARY',
+                headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
+                headerBackground: () => <Header />,
+                headerLeft: () => <IconHeader icon={icNotification} right={false} />,
+                headerRight: () => <IconHeader icon={icSearch} />
+              }}
+            />
+            <LibraryStack.Screen
+              name="BookDetail"
+              component={BookDetail}
+              options={({ navigation }) => ({
+                title: 'BOOK DETAIL',
+                headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
+                headerBackground: () => <Header />,
+                headerLeft: () => (
+                  <IconHeader icon={icBack} right={false} onPressIcon={() => navigation.goBack()} />
+                )
+              })}
+            />
+          </>
+        ) : (
+          <LibraryStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        )}
       </LibraryStack.Navigator>
     </NavigationContainer>
   );

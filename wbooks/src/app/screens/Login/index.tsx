@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import actionCreators from '@redux/auth/actions';
 import { ImageBackground, Text, TouchableOpacity } from 'react-native';
@@ -18,26 +17,25 @@ interface DataForm {
 
 const Login = () => {
   const { control, handleSubmit, errors } = useForm();
-  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const getUser = async () => {
       try {
         const authData = await AsyncStorage.getItem('authData');
-        Reactotron.log(authData === null ? null : JSON.parse(authData));
+        return authData === null
+          ? null
+          : dispatch(actionCreators.setCurrentUser(JSON.parse(authData).currentUser));
       } catch (e) {
         if (__DEV__) Reactotron.log(e);
+        return e;
       }
     };
 
     getUser();
-  }, []);
+  }, [dispatch]);
 
-  const onSubmit = (data: DataForm) => {
-    dispatch(actionCreators.login(data.email, data.password));
-    navigation.navigate('Library');
-  };
+  const onSubmit = (data: DataForm) => dispatch(actionCreators.login(data.email, data.password));
 
   return (
     <ImageBackground source={bcInicio} style={styles.container}>
