@@ -2,7 +2,7 @@ import { createReducer, completeReducer, completeState } from 'redux-recompose';
 
 import { actions } from './actions';
 
-const initialState = completeState({ description: { responseAPI: {}, currentUser: null } });
+const initialState = completeState({ description: { responseAPI: null, currentUser: null } });
 
 const reducerDescription = {
   primaryActions: [actions.LOGIN],

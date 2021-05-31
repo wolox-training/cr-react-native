@@ -7,10 +7,12 @@ const completedActions = completeTypes({ primaryActions: ['LOGIN', 'SET_CURRENT_
 
 export const actions = createTypes(completedActions, '@@AUTH');
 
+const target = { responseAPI: 'responseAPI', currentUser: 'currentUser' };
+
 const actionCreators = {
   login: (email: string, password: string) => ({
     type: actions.LOGIN,
-    target: 'responseAPI',
+    target: target.responseAPI,
     service: login,
     payload: { email, password },
     injections: [
@@ -26,7 +28,7 @@ const actionCreators = {
   }),
   setCurrentUser: (user: string) => ({
     type: actions.SET_CURRENT_USER,
-    target: 'currentUser',
+    target: target.currentUser,
     payload: user
   })
 };

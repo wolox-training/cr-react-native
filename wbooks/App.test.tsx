@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import App from './src/app';
 
 const mockStore = configureMockStore([thunk]);
-const store = mockStore({ book: { books: [] } });
+const store = mockStore({ book: { books: [] }, auth: { currentUser: '' } });
 
 // Note: test renderer must be required after react-native.
 
