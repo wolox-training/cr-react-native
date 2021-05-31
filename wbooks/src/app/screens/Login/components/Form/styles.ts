@@ -9,7 +9,7 @@ interface Styles {
 
 export default StyleSheet.create<Styles>({
   formContainer: {
-    marginBottom: 30
+    marginTop: 30
   },
   formTitle: {
     fontSize: 16,
