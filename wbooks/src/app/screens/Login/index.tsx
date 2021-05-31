@@ -20,8 +20,8 @@ const Login = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const onSubmit = (data: DataForm) => {
-    dispatch(actionCreators.login(data.email, data.password));
+  const onSubmit = ({ email, password }: DataForm) => {
+    dispatch(actionCreators.login(email, password));
     navigation.navigate('Library');
   };
 

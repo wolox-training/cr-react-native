@@ -5,10 +5,12 @@ const completedActions = completeTypes({ primaryActions: ['LOGIN'] });
 
 export const actions = createTypes(completedActions, '@@AUTH');
 
+const target = 'user';
+
 const actionCreators = {
   login: (email: string, password: string) => ({
     type: actions.LOGIN,
-    target: 'user',
+    target,
     service: login,
     payload: { email, password }
   })

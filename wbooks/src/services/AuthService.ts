@@ -4,4 +4,4 @@ interface Props {
 }
 
 export const login = ({ email }: Props) =>
-  Promise.resolve({ ok: true, data: { id: 1, toke: 'AE12OI45PK56LK', client: email }, problem: '' });
+  Promise.resolve({ ok: true, data: { id: 1, token: 'AE12OI45PK56LK', client: email }, problem: '' });
