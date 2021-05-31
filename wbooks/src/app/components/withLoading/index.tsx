@@ -6,7 +6,8 @@ interface Props {
   isLoading?: boolean;
 }
 
-const withLoading = <P extends Props>(Component: React.ComponentType<P>) =>
+const withLoading =
+  <P extends Props>(Component: React.ComponentType<P>) =>
   (props: P) =>
     props.isLoading ? <ActivityIndicator color={COLORS.lightBlue} /> : <Component {...props} />;
 
