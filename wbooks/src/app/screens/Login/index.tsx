@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ImageBackground, Text, TouchableOpacity } from 'react-native';
 import Form from '@screens/Login/components/Form';
 import bcInicio from '@assets/General/bc_inicio.png';
+import { validateEmail, validatePassword } from '@utils/validations';
 
 import styles from './styles';
 
@@ -21,9 +22,7 @@ const Login = () => {
         render={({ onChange, value }) => <Form title="Email" value={value} onChange={onChange} />}
         rules={{
           required: { value: true, message: 'Campo requerido' },
-          validate: value =>
-            value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ||
-            'El email no es valido'
+          validate: validateEmail
         }}
         defaultValue=""
       />
@@ -37,7 +36,7 @@ const Login = () => {
         )}
         rules={{
           required: { value: true, message: 'Campo requerido' },
-          validate: value => value.length >= 8 || 'La contraseña debe tener 8 o más caracteres'
+          validate: validatePassword
         }}
         defaultValue=""
       />
