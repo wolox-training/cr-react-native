@@ -5,7 +5,7 @@ import styles from './styles';
 
 interface Props {
   title: string;
-  value: any;
+  value: string;
   onChange: (text: string) => void;
   isSecure?: boolean;
 }
