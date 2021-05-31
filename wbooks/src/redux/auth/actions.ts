@@ -26,7 +26,7 @@ const actionCreators = {
       })
     ]
   }),
-  setCurrentUser: (user: string) => ({
+  setCurrentUser: (user: string | null) => ({
     type: actions.SET_CURRENT_USER,
     target: target.currentUser,
     payload: user
