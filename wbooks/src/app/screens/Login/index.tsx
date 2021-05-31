@@ -7,6 +7,7 @@ import Form from '@screens/Login/components/Form';
 import bcInicio from '@assets/General/bc_inicio.png';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Reactotron from 'reactotron-react-native';
+import { validateEmail, validatePassword } from '@utils/validations';
 
 import styles from './styles';
 
@@ -35,7 +36,7 @@ const Login = () => {
     getUser();
   }, [dispatch]);
 
-  const onSubmit = (data: DataForm) => dispatch(actionCreators.login(data.email, data.password));
+  const onSubmit = ({ email, password }: DataForm) => dispatch(actionCreators.login(email, password));
 
   return (
     <ImageBackground source={bcInicio} style={styles.container}>
@@ -45,9 +46,7 @@ const Login = () => {
         render={({ onChange, value }) => <Form title="Email" value={value} onChange={onChange} />}
         rules={{
           required: { value: true, message: 'Campo requerido' },
-          validate: value =>
-            value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ||
-            'El email no es valido'
+          validate: validateEmail
         }}
         defaultValue=""
       />
@@ -61,7 +60,7 @@ const Login = () => {
         )}
         rules={{
           required: { value: true, message: 'Campo requerido' },
-          validate: value => value.length >= 8 || 'La contraseña debe tener 8 o más caracteres'
+          validate: validatePassword
         }}
         defaultValue=""
       />
