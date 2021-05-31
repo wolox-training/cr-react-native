@@ -1,12 +1,15 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { fetchMiddleware } from 'redux-recompose';
+import { createStore, applyMiddleware, compose, combineReducers as CR } from 'redux';
+import { fetchMiddleware, wrapCombineReducers } from 'redux-recompose';
 import thunk from 'redux-thunk';
 import Reactotron from '@config/reactotronConfig';
+import bookReducer from '@redux/book/reducer';
+import authReducer from '@redux/auth/reducer';
 
-import bookReducer from './book/reducer';
+const combineReducers = wrapCombineReducers(CR);
 
 const rootReducer = combineReducers({
-  book: bookReducer
+  book: bookReducer,
+  auth: authReducer
 });
 
 export default createStore(

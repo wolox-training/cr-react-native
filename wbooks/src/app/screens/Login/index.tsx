@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import actionCreators from '@redux/auth/actions';
 import { ImageBackground, Text, TouchableOpacity } from 'react-native';
 import Form from '@screens/Login/components/Form';
 import bcInicio from '@assets/General/bc_inicio.png';
@@ -8,11 +10,20 @@ import { validateEmail, validatePassword } from '@utils/validations';
 
 import styles from './styles';
 
+interface DataForm {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
   const { control, handleSubmit, errors } = useForm();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const onSubmit = () => navigation.navigate('Library');
+  const onSubmit = ({ email, password }: DataForm) => {
+    dispatch(actionCreators.login(email, password));
+    navigation.navigate('Library');
+  };
 
   return (
     <ImageBackground source={bcInicio} style={styles.container}>
