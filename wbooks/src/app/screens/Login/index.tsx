@@ -34,7 +34,7 @@ const Login = () => {
     };
 
     getUser();
-  }, [dispatch]);
+  });
 
   const onSubmit = ({ email, password }: DataForm) => dispatch(actionCreators.login(email, password));
 
