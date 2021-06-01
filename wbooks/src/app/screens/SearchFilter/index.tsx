@@ -9,12 +9,11 @@ import { TEXTS } from '@constants/texts';
 import styles from './styles';
 
 interface RootState {
-  books: Book[];
-  query: string;
+  book: { books: Book[]; query: string };
 }
 
 const SearchFilter = () => {
-  const { books, query } = useSelector((state: RootState) => state);
+  const { books, query } = useSelector((state: RootState) => state.book);
   const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
 
   useEffect(() => {

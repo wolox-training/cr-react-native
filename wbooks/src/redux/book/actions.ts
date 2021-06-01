@@ -5,10 +5,12 @@ const completedActions = completeTypes({ primaryActions: ['GET_BOOKS', 'SET_QUER
 
 export const actions = createTypes(completedActions, '@@BOOK');
 
+const target = 'books';
+
 const actionCreators = {
   getBooks: () => ({
     type: actions.GET_BOOKS,
-    target: 'books',
+    target,
     service: getBooks
   }),
   setQuery: (query: string) => ({

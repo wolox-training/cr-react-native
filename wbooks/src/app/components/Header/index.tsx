@@ -12,12 +12,12 @@ interface Props {
 }
 
 interface RootState {
-  query: string;
+  book: { query: string };
 }
 
 const HeaderBackground = ({ routeName }: Props) => {
   const dispatch = useDispatch();
-  const query = useSelector((state: RootState) => state.query);
+  const { query } = useSelector((state: RootState) => state.book);
 
   const onChangeQuery = (text: string) => {
     dispatch(actionCreators.setQuery(text));
