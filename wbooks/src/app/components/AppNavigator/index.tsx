@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,10 +14,12 @@ import IconHeader from '@app/components/Header/components/IconHeader';
 import icSearch from '@assets/NavigationBar/ic_search.png';
 import icBack from '@assets/NavigationBar/ic_back.png';
 import icNotification from '@assets/NavigationBar/ic_notifications.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import actionCreators from '@redux/auth/actions';
+import { getCurrentUser } from '@services/AuthService';
 
 interface RootState {
-  auth: { currentUser: string };
+  auth: { responseAPI: Object; currentUser: string };
 }
 
 const Tab = createBottomTabNavigator<TabBarParamList>();
@@ -34,7 +36,18 @@ const Library = () => (
 );
 
 function AppNavigator() {
-  const { currentUser } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
+
+  const { responseAPI, currentUser } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await getCurrentUser();
+      dispatch(actionCreators.setCurrentUser(user));
+    };
+
+    getUser();
+  }, [dispatch, responseAPI]);
 
   return (
     <NavigationContainer>

@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import actionCreators from '@redux/auth/actions';
 import { ImageBackground, Text, TouchableOpacity } from 'react-native';
 import Form from '@screens/Login/components/Form';
 import bcInicio from '@assets/General/bc_inicio.png';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Reactotron from 'reactotron-react-native';
 import witLoading from '@components/withLoading';
 import { validateEmail, validatePassword } from '@utils/validations';
 
@@ -28,22 +26,6 @@ const Login = () => {
 
   const { control, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const authData = await AsyncStorage.getItem('authData');
-        return authData === null
-          ? null
-          : dispatch(actionCreators.setCurrentUser(JSON.parse(authData).currentUser));
-      } catch (e) {
-        if (__DEV__) Reactotron.log(e);
-        return e;
-      }
-    };
-
-    getUser();
-  });
 
   const onSubmit = ({ email, password }: DataForm) => dispatch(actionCreators.login(email, password));
 
