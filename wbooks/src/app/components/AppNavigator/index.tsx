@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -18,9 +18,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import actionCreators from '@redux/auth/actions';
 import Reactotron from 'reactotron-react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getCurrentUser } from '@services/AuthService';
 
 interface RootState {
-  auth: { currentUser: string };
+  auth: { responseAPI: Object; responseAPILoading: boolean; currentUser: string };
 }
 
 const Tab = createBottomTabNavigator<TabBarParamList>();
@@ -38,7 +39,19 @@ const Library = () => (
 
 function AppNavigator() {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state: RootState) => state.auth);
+
+  const { responseAPI, responseAPILoading, currentUser } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await getCurrentUser();
+      dispatch(actionCreators.setCurrentUser(user));
+    };
+
+    getUser();
+  }, [dispatch, responseAPI]);
+
+  const LoginWithLoading = () => <Login isLoading={responseAPILoading} />;
 
   const logout = async () => {
     try {
@@ -84,7 +97,7 @@ function AppNavigator() {
             />
           </>
         ) : (
-          <LibraryStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <LibraryStack.Screen name="Login" component={LoginWithLoading} options={{ headerShown: false }} />
         )}
       </LibraryStack.Navigator>
     </NavigationContainer>
