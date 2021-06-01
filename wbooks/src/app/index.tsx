@@ -9,14 +9,15 @@
  */
 
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 import AppNavigator from '@components/AppNavigator';
-import { Provider } from 'react-redux';
-import store from '@redux/store';
+
+import styles from './styles';
 
 const App = () => (
-  <Provider store={store}>
+  <SafeAreaView style={styles.container}>
     <AppNavigator />
-  </Provider>
+  </SafeAreaView>
 );
 
 export default App;

@@ -9,19 +9,23 @@ import { TEXTS } from '@constants/texts';
 import styles from './styles';
 
 interface RootState {
-  books: Book[];
-  query: string;
+  book: { books: Book[]; query: string };
 }
 
 const SearchFilter = () => {
-  const { books, query } = useSelector((state: RootState) => state);
+  const { books, query } = useSelector((state: RootState) => state.book);
 
   const filteredBooks = useMemo(
     () => books.filter(book => book.title.toLowerCase().includes(query.toLowerCase())),
     [books, query]
   );
 
-  if (filteredBooks.length && query) return <BookList books={filteredBooks} />;
+  if (filteredBooks.length && query)
+    return (
+      <View style={styles.listContainer}>
+        <BookList books={filteredBooks} />
+      </View>
+    );
 
   return (
     <View style={styles.container}>

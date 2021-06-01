@@ -8,12 +8,12 @@ import actionCreators from '@redux/book/actions';
 import styles from './styles';
 
 interface RootState {
-  books: Book[];
+  book: { books: Book[] };
 }
 
 const Library = () => {
   const dispatch = useDispatch();
-  const books = useSelector((state: RootState) => state.books);
+  const { books } = useSelector((state: RootState) => state.book);
 
   useEffect(() => {
     dispatch(actionCreators.getBooks());
