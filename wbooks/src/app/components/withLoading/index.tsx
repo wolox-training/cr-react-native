@@ -8,15 +8,13 @@ interface Props {
   isLoading?: boolean;
 }
 
-const withLoading =
-  <P extends Props>(Component: React.ComponentType<P>) =>
-  (props: P) =>
-    props.isLoading ? (
-      <View style={styles.container}>
-        <ActivityIndicator color={COLORS.primary} size="large" />
-      </View>
-    ) : (
-      <Component {...props} />
-    );
+const withLoading = (Component: React.ComponentType<Props>) => (props: Props) =>
+  props.isLoading ? (
+    <View style={styles.container}>
+      <ActivityIndicator color={COLORS.primary} size="large" />
+    </View>
+  ) : (
+    <Component {...props} />
+  );
 
 export default withLoading;
