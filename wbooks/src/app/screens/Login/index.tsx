@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import actionCreators from '@redux/auth/actions';
 import { ImageBackground, Text, TouchableOpacity } from 'react-native';
@@ -17,13 +16,9 @@ interface DataForm {
 
 const Login = () => {
   const { control, handleSubmit, errors } = useForm();
-  const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const onSubmit = ({ email, password }: DataForm) => {
-    dispatch(actionCreators.login(email, password));
-    navigation.navigate('Library');
-  };
+  const onSubmit = ({ email, password }: DataForm) => dispatch(actionCreators.login(email, password));
 
   return (
     <ImageBackground source={bcInicio} style={styles.container}>
