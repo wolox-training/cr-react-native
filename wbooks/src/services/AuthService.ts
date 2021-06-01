@@ -7,10 +7,17 @@ interface Props {
 }
 
 export const login = ({ email }: Props) =>
-  Promise.resolve({
-    ok: true,
-    data: { headers: { uid: email, token: 'AE12OI45PK56LK', client: 'secret_variable' }, currentUser: email },
-    problem: ''
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve({
+        ok: true,
+        data: {
+          headers: { uid: email, token: 'AE12OI45PK56LK', client: 'secret_variable' },
+          currentUser: email
+        },
+        problem: ''
+      });
+    }, 5000);
   });
 
 export const getCurrentUser = async () => {

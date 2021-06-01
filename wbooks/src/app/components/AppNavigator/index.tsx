@@ -19,7 +19,7 @@ import actionCreators from '@redux/auth/actions';
 import { getCurrentUser } from '@services/AuthService';
 
 interface RootState {
-  auth: { responseAPI: Object; currentUser: string };
+  auth: { responseAPI: Object; responseAPILoading: boolean; currentUser: string };
 }
 
 const Tab = createBottomTabNavigator<TabBarParamList>();
@@ -38,7 +38,7 @@ const Library = () => (
 function AppNavigator() {
   const dispatch = useDispatch();
 
-  const { responseAPI, currentUser } = useSelector((state: RootState) => state.auth);
+  const { responseAPI, responseAPILoading, currentUser } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     const getUser = async () => {
@@ -48,6 +48,8 @@ function AppNavigator() {
 
     getUser();
   }, [dispatch, responseAPI]);
+
+  const LoginWithLoading = () => <Login isLoading={responseAPILoading} />;
 
   return (
     <NavigationContainer>
@@ -84,7 +86,7 @@ function AppNavigator() {
             />
           </>
         ) : (
-          <LibraryStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <LibraryStack.Screen name="Login" component={LoginWithLoading} options={{ headerShown: false }} />
         )}
       </LibraryStack.Navigator>
     </NavigationContainer>

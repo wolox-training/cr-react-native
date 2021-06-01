@@ -5,6 +5,7 @@ import actionCreators from '@redux/auth/actions';
 import { ImageBackground, Text, TouchableOpacity } from 'react-native';
 import Form from '@screens/Login/components/Form';
 import bcInicio from '@assets/General/bc_inicio.png';
+import witLoading from '@components/withLoading';
 import { validateEmail, validatePassword } from '@utils/validations';
 
 import styles from './styles';
@@ -55,4 +56,6 @@ const Login = () => {
   );
 };
 
-export default Login;
+const LoginWithLoading = witLoading(Login);
+
+export default LoginWithLoading;
