@@ -23,7 +23,12 @@ const SearchFilter = () => {
     setFilteredBooks(newBooks);
   }, [books, query]);
 
-  if (filteredBooks.length && query) return <BookList books={filteredBooks} />;
+  if (filteredBooks.length && query)
+    return (
+      <View style={styles.listContainer}>
+        <BookList books={filteredBooks} />
+      </View>
+    );
 
   return (
     <View style={styles.container}>

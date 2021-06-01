@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ImageBackground, TextInput, Text, TouchableOpacity, Image } from 'react-native';
+import { View, ImageBackground, TextInput, Text, TouchableOpacity, Image, Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import actionCreators from '@redux/book/actions';
 import background from '@assets/General/bc_nav_bar.png';
@@ -29,17 +29,22 @@ const HeaderBackground = ({ routeName }: Props) => {
 
   if (routeName === 'SearchFilter')
     return (
-      <ImageBackground source={background} style={styles.backgroundContainer} imageStyle={styles.imageStyle}>
-        <View style={styles.container}>
-          <Image source={icSearch} style={styles.icon} />
+      <View style={Platform.OS === 'ios' && { ...styles.container }}>
+        <ImageBackground
+          source={background}
+          style={styles.backgroundContainer}
+          imageStyle={styles.imageStyle}>
+          <View style={styles.inputContainer}>
+            <Image source={icSearch} style={styles.icon} />
 
-          <TextInput style={styles.input} value={query} onChangeText={value => onChangeQuery(value)} />
+            <TextInput style={styles.input} value={query} onChangeText={value => onChangeQuery(value)} />
 
-          <TouchableOpacity style={styles.btnRight} onPress={deleteQuery}>
-            <Text>x</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
+            <TouchableOpacity style={styles.btnRight} onPress={deleteQuery}>
+              <Text>x</Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
+      </View>
     );
 
   return (
