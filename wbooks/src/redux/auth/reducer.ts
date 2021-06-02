@@ -7,7 +7,7 @@ const initialState = completeState({ description: { responseAPI: null, currentUs
 const reducerDescription = {
   primaryActions: [actions.LOGIN],
   override: {
-    [actions.SET_CURRENT_USER]: (state: any, action: { payload: string }) => ({
+    [actions.SET_CURRENT_USER]: (state: any, action: { payload: string | null }) => ({
       ...state,
       currentUser: action.payload
     })

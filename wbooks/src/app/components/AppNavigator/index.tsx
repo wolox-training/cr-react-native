@@ -14,8 +14,10 @@ import IconHeader from '@app/components/Header/components/IconHeader';
 import icSearch from '@assets/NavigationBar/ic_search.png';
 import icBack from '@assets/NavigationBar/ic_back.png';
 import icLogout from '@assets/NavigationBar/ic_logout.png';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import actionCreators from '@redux/auth/actions';
+import Reactotron from 'reactotron-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getCurrentUser } from '@services/AuthService';
 
 interface RootState {
@@ -51,6 +53,15 @@ function AppNavigator() {
 
   const LoginWithLoading = () => <Login isLoading={responseAPILoading} />;
 
+  const logout = async () => {
+    try {
+      await AsyncStorage.removeItem('authData');
+      dispatch(actionCreators.setCurrentUser(null));
+    } catch (e) {
+      if (__DEV__) Reactotron.log(e);
+    }
+  };
+
   return (
     <NavigationContainer>
       <LibraryStack.Navigator
@@ -68,7 +79,7 @@ function AppNavigator() {
                 title: 'LIBRARY',
                 headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
                 headerBackground: () => <Header />,
-                headerLeft: () => <IconHeader icon={icLogout} right={false} />,
+                headerLeft: () => <IconHeader icon={icLogout} right={false} onPressIcon={logout} />,
                 headerRight: () => <IconHeader icon={icSearch} />
               }}
             />
