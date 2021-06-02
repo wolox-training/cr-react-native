@@ -10,6 +10,7 @@
     "ios:clean": "cd ios/ && rm -rf build && rm -rf Pods",
     "start": "npx react-native start",
     "test": "jest",
+    "test:watch": "jest -o --watch",
     "coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint-fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
