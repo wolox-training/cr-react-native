@@ -13,7 +13,7 @@ import Header from '@components/Header';
 import IconHeader from '@app/components/Header/components/IconHeader';
 import icSearch from '@assets/NavigationBar/ic_search.png';
 import icBack from '@assets/NavigationBar/ic_back.png';
-import icNotification from '@assets/NavigationBar/ic_notifications.png';
+import icLogout from '@assets/NavigationBar/ic_logout.png';
 import { useDispatch, useSelector } from 'react-redux';
 import actionCreators from '@redux/auth/actions';
 import { getCurrentUser } from '@services/AuthService';
@@ -68,7 +68,7 @@ function AppNavigator() {
                 title: 'LIBRARY',
                 headerTitleAlign: Platform.OS === 'ios' ? 'center' : 'left',
                 headerBackground: () => <Header />,
-                headerLeft: () => <IconHeader icon={icNotification} right={false} />,
+                headerLeft: () => <IconHeader icon={icLogout} right={false} />,
                 headerRight: () => <IconHeader icon={icSearch} />
               }}
             />
