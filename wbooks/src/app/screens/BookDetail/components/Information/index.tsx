@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { View, Text, Image, Animated, TouchableOpacity } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
 import Button from '@components/Button';
-import GradientButton from '@components/GradientButton';
+import Gradient from '@app/components/Gradient';
 import icMyrentals from '@assets/ToolBar/ic_myrentals.png';
 
 import styles from './styles';
@@ -47,7 +47,7 @@ const Information = ({ title, author, imageUrl, year, genre }: Props) => {
         </Animated.View>
       ) : (
         <TouchableOpacity onPress={onRent}>
-          <GradientButton text={'RENT'} />
+          <Gradient text={'RENT'} />
         </TouchableOpacity>
       )}
     </View>

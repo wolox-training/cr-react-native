@@ -9,7 +9,7 @@ interface Props {
   text: string;
 }
 
-const GradientButton = ({ text }: Props) => {
+const Gradient = ({ text }: Props) => {
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -21,4 +21,4 @@ const GradientButton = ({ text }: Props) => {
   );
 };
 
-export default GradientButton;
+export default Gradient;
