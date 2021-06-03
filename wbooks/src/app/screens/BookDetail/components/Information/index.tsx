@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, Image, Animated, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Animated } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
 import Button from '@components/Button';
 import icMyrentals from '@assets/ToolBar/ic_myrentals.png';
@@ -45,9 +45,7 @@ const Information = ({ title, author, imageUrl, year, genre }: Props) => {
           <Image style={styles.successImage} source={icMyrentals} />
         </Animated.View>
       ) : (
-        <TouchableOpacity onPress={onRent}>
-          <Button text={'RENT'} />
-        </TouchableOpacity>
+        <Button text={'RENT'} onPressBtn={onRent} />
       )}
     </View>
   );
