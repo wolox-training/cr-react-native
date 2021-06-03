@@ -1,4 +1,4 @@
-import { login } from '@services/AuthService';
+import authService from '@services/AuthService';
 import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Reactotron from 'reactotron-react-native';
@@ -7,13 +7,13 @@ const completedActions = completeTypes({ primaryActions: ['LOGIN', 'SET_CURRENT_
 
 export const actions = createTypes(completedActions, '@@AUTH');
 
-const targets = { responseAPI: 'responseAPI', currentUser: 'currentUser' };
+export const targets = { responseAPI: 'responseAPI', currentUser: 'currentUser' };
 
 const actionCreators = {
   login: (email: string, password: string) => ({
     type: actions.LOGIN,
     target: targets.responseAPI,
-    service: login,
+    service: authService.login,
     payload: { email, password },
     injections: [
       withPostSuccess(async (dispatch: any, response: any) => {

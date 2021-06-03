@@ -13,8 +13,6 @@ describe('testBookAction', () => {
     store.clearActions();
   });
   test('books success', async () => {
-    bookService.getBooks = jest.fn().mockImplementation(() => ({ ok: true, data: BOOKS_MOCK }));
-
     await store.dispatch(actionCreators.getBooks());
     expect(store.getActions()).toEqual([
       {
