@@ -2,7 +2,7 @@ import { createReducer, completeReducer, completeState } from 'redux-recompose';
 
 import { actions } from './actions';
 
-const initialState = completeState({ description: { books: [], query: '' } });
+export const initialState = completeState({ description: { books: [], query: '' } });
 
 const reducerDescription = {
   primaryActions: [actions.GET_BOOKS],
