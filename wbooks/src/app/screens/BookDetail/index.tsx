@@ -5,17 +5,17 @@ import { LibraryStackParamList } from '@interfaces/navigation';
 import { RouteProp } from '@react-navigation/native';
 import Information from '@screens/BookDetail/components/Information';
 import { COMMENTS_MOCK } from '@constants/mockComments';
-import TableComments from '@app/screens/BookDetail/components/TableComments';
+import TableComments from '@screens/BookDetail/components/TableComments';
 import Comment from '@interfaces/comment';
 
 import styles from './styles';
 
-type ProfileScreenNavigationProp = StackNavigationProp<LibraryStackParamList, 'BookDetail'>;
-type ProfileScreenRouteProp = RouteProp<LibraryStackParamList, 'BookDetail'>;
+type ScreenNavigationProp = StackNavigationProp<LibraryStackParamList, 'BookDetail'>;
+type ScreenRouteProp = RouteProp<LibraryStackParamList, 'BookDetail'>;
 
 type Props = {
-  route: ProfileScreenRouteProp;
-  navigation: ProfileScreenNavigationProp;
+  route: ScreenRouteProp;
+  navigation: ScreenNavigationProp;
 };
 
 const BookDetail = ({ route }: Props) => {

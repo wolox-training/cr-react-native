@@ -4,6 +4,7 @@ export type LibraryStackParamList = {
   Login: undefined;
   Library: undefined;
   BookDetail: Book;
+  SearchFilter: undefined;
 };
 
 export type TabBarParamList = {
