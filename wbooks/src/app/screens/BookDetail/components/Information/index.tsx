@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
 import Button from '@components/Button';
+import GradientButton from '@components/GradientButton';
 
 import styles from './styles';
 
@@ -27,7 +28,7 @@ const Information = ({ title, author, imageUrl, year, genre }: Props) => {
         </View>
       </View>
       <Button solid={false} text={'ADD TO WISH LIST'} />
-      <Button text={'RENT'} />
+      <GradientButton text={'RENT'} />
     </View>
   );
 };
