@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { View, FlatList, ListRenderItem } from 'react-native';
-import BookData from '@screens/Library/components/BookData';
+import { View } from 'react-native';
+import BookList from '@components/BookList/index';
 import Book from '@interfaces/book';
 import { useDispatch, useSelector } from 'react-redux';
 import actionCreators from '@redux/book/actions';
@@ -13,20 +13,15 @@ interface RootState {
 
 const Library = () => {
   const dispatch = useDispatch();
+  const { books } = useSelector((state: RootState) => state.book);
 
   useEffect(() => {
     dispatch(actionCreators.getBooks());
   }, [dispatch]);
 
-  const { books } = useSelector((state: RootState) => state.book);
-
-  const renderItem: ListRenderItem<Book> = ({ item }) => <BookData {...item} />;
-
-  const keyExtractor = (item: Book) => item.id.toString();
-
   return (
     <View style={styles.container}>
-      <FlatList data={books} renderItem={renderItem} keyExtractor={keyExtractor} />
+      <BookList books={books} />
     </View>
   );
 };
