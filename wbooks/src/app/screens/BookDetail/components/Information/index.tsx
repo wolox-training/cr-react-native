@@ -1,8 +1,9 @@
-import React from 'react';
-import { View, Text, Image } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, Text, Image, Animated, TouchableOpacity } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
 import Button from '@components/Button';
 import GradientButton from '@components/GradientButton';
+import icMyrentals from '@assets/ToolBar/ic_myrentals.png';
 
 import styles from './styles';
 
@@ -16,6 +17,18 @@ interface Props {
 }
 
 const Information = ({ title, author, imageUrl, year, genre }: Props) => {
+  const [isRented, setIsRented] = useState(false);
+  const showUpAnim = useRef(new Animated.Value(0)).current;
+
+  const onRent = () => {
+    setIsRented(true);
+    Animated.timing(showUpAnim, {
+      toValue: 2,
+      duration: 400,
+      useNativeDriver: true
+    }).start();
+  };
+
   return (
     <View style={styles.bookCard}>
       <View style={styles.dataContainer}>
@@ -28,7 +41,15 @@ const Information = ({ title, author, imageUrl, year, genre }: Props) => {
         </View>
       </View>
       <Button solid={false} text={'ADD TO WISH LIST'} />
-      <GradientButton text={'RENT'} />
+      {isRented ? (
+        <Animated.View style={[styles.successBtn, { transform: [{ scale: showUpAnim }] }]}>
+          <Image style={styles.successImage} source={icMyrentals} />
+        </Animated.View>
+      ) : (
+        <TouchableOpacity onPress={onRent}>
+          <GradientButton text={'RENT'} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
