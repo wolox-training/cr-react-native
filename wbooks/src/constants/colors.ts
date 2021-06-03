@@ -3,5 +3,6 @@ export const COLORS = {
   lightBlue: '#8FDFF5',
   primary: '#00adee',
   transparent: 'transparent',
-  error: '#CA4227'
+  error: '#CA4227',
+  green: 'forestgreen'
 };
