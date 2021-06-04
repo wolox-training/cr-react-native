@@ -4,6 +4,7 @@ import bcInicio from '@assets/General/bc_inicio.png';
 import Button from '@components/Button';
 import Gradient from '@app/components/Gradient';
 import icMyrentals from '@assets/ToolBar/ic_myrentals.png';
+import Modal from '@components/Modal';
 
 import styles from './styles';
 
@@ -18,9 +19,15 @@ interface Props {
 
 const Information = ({ title, author, imageUrl, year, genre }: Props) => {
   const [isRented, setIsRented] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const showUpAnim = useRef(new Animated.Value(0)).current;
 
   const onRent = () => {
+    setShowModal(true);
+  };
+
+  const onCofirm = () => {
+    setShowModal(false);
     setIsRented(true);
     Animated.timing(showUpAnim, {
       toValue: 2,
@@ -29,8 +36,13 @@ const Information = ({ title, author, imageUrl, year, genre }: Props) => {
     }).start();
   };
 
+  const onReject = () => {
+    setShowModal(false);
+  };
+
   return (
     <View style={styles.bookCard}>
+      <Modal message="Are you sure?" isVisible={showModal} onConfirm={onCofirm} onReject={onReject} />
       <View style={styles.dataContainer}>
         <Image source={imageUrl ? { uri: imageUrl } : bcInicio} style={styles.detailImageBook} />
         <View style={styles.textContainer}>
