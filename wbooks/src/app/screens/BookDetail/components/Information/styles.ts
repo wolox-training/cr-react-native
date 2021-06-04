@@ -2,6 +2,8 @@ import { StyleSheet, ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { COLORS } from '@constants/colors';
 import { SIZE } from '@constants/fonts';
 
+const IMGSIZE = 17;
+
 interface Styles {
   bookCard: ViewStyle;
   dataContainer: ViewStyle;
@@ -49,8 +51,8 @@ export default StyleSheet.create<Styles>({
     padding: 5
   },
   successImage: {
-    height: 17,
-    width: 17,
+    height: IMGSIZE,
+    width: IMGSIZE,
     resizeMode: 'stretch'
   }
 });
