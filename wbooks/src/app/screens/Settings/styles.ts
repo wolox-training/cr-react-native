@@ -1,5 +1,8 @@
 import { COLORS } from '@constants/colors';
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, PixelRatio, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { RFPercentage } from 'react-native-responsive-fontsize';
+
+const SIZE = 30;
 
 interface Styles {
   container: ViewStyle;
@@ -26,14 +29,14 @@ export default StyleSheet.create<Styles>({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 22
+    fontSize: RFPercentage(3.5)
   },
   imageProfile: {
-    height: 100,
-    width: 100
+    height: PixelRatio.getPixelSizeForLayoutSize(SIZE),
+    width: PixelRatio.getPixelSizeForLayoutSize(SIZE)
   },
   user: {
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: RFPercentage(2.2)
   }
 });

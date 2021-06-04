@@ -1,5 +1,6 @@
 import { COLORS } from '@constants/colors';
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 interface Styles {
   title: TextStyle;
@@ -13,7 +14,7 @@ interface Styles {
 export default StyleSheet.create<Styles>({
   title: {
     fontWeight: 'bold',
-    fontSize: 22,
+    fontSize: RFPercentage(3.5),
     alignSelf: 'center',
     color: COLORS.primary
   },
