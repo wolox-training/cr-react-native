@@ -3,6 +3,7 @@ import { ImageStyle, PixelRatio, StyleSheet, TextStyle, ViewStyle } from 'react-
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 const SIZE = 30;
+const PIXEL_SIZE = PixelRatio.getPixelSizeForLayoutSize(SIZE);
 
 interface Styles {
   container: ViewStyle;
@@ -32,8 +33,8 @@ export default StyleSheet.create<Styles>({
     fontSize: RFPercentage(3.5)
   },
   imageProfile: {
-    height: PixelRatio.getPixelSizeForLayoutSize(SIZE),
-    width: PixelRatio.getPixelSizeForLayoutSize(SIZE)
+    height: PIXEL_SIZE,
+    width: PIXEL_SIZE
   },
   user: {
     fontWeight: 'bold',

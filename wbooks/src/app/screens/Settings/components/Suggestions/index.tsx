@@ -8,6 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 
+const [sliderWidth, itemWidth] = [350, 300];
+
 interface RootState {
   auth: { currentUser: string };
   book: { books: Book[] };
@@ -39,7 +41,7 @@ const Suggestions = () => {
     <>
       <Text style={styles.title}>Suggestions</Text>
       <View style={styles.containerCarousel}>
-        <Carousel data={books} renderItem={renderItem} sliderWidth={350} itemWidth={300} />
+        <Carousel data={books} renderItem={renderItem} sliderWidth={sliderWidth} itemWidth={itemWidth} />
       </View>
     </>
   );
