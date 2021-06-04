@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, StatusBar } from 'react-native';
 import Book from '@interfaces/book';
 import { useSelector } from 'react-redux';
 import BookList from '@components/BookList/index';
@@ -29,6 +29,7 @@ const SearchFilter = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar animated backgroundColor="rgba(0, 0, 0, 0.7)" />
       <Image source={icSearch} />
       <Text style={styles.title}>{TEXTS.title}</Text>
       <Text style={styles.subTitle}>{filteredBooks.length ? TEXTS.subTitle : TEXTS.error}</Text>

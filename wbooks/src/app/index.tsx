@@ -9,13 +9,14 @@
  */
 
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
 import AppNavigator from '@components/AppNavigator';
 
 import styles from './styles';
 
 const App = () => (
   <SafeAreaView style={styles.container}>
+    <StatusBar animated barStyle="light-content" backgroundColor="black" />
     <AppNavigator />
   </SafeAreaView>
 );

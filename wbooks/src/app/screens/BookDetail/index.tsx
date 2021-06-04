@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, ListRenderItem, TouchableOpacity, Text } from 'react-native';
+import { FlatList, ListRenderItem, TouchableOpacity, Text, StatusBar } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { LibraryStackParamList } from '@interfaces/navigation';
 import { RouteProp } from '@react-navigation/native';
@@ -34,17 +34,20 @@ const BookDetail = ({ route }: Props) => {
   const keyExtractor = (item: Comment) => item.id.toString();
 
   return (
-    <FlatList
-      style={styles.container}
-      ListHeaderComponentStyle={styles.header}
-      ListHeaderComponent={<Information {...route.params} />}
-      data={mock}
-      extraData={mock}
-      renderItem={renderItem}
-      keyExtractor={keyExtractor}
-      ListFooterComponentStyle={styles.footer}
-      ListFooterComponent={Footer}
-    />
+    <>
+      <StatusBar animated backgroundColor="rgba(0, 0, 0, 0.7)" />
+      <FlatList
+        style={styles.container}
+        ListHeaderComponentStyle={styles.header}
+        ListHeaderComponent={<Information {...route.params} />}
+        data={mock}
+        extraData={mock}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        ListFooterComponentStyle={styles.footer}
+        ListFooterComponent={Footer}
+      />
+    </>
   );
 };
 
