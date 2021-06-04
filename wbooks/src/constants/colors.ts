@@ -5,5 +5,6 @@ export const COLORS = {
   secondary: '#0BD5D6',
   transparent: 'transparent',
   error: '#CA4227',
-  green: 'forestgreen'
+  green: 'forestgreen',
+  black30: 'rgba(0, 0, 0, 0.7)'
 };

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import BookList from '@components/BookList/index';
 import icSearch from '@assets/General/ic_search_placeholder.png';
 import { TEXTS } from '@constants/texts';
+import { COLORS } from '@constants/colors';
 
 import styles from './styles';
 
@@ -29,7 +30,7 @@ const SearchFilter = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar animated backgroundColor="rgba(0, 0, 0, 0.7)" />
+      <StatusBar animated backgroundColor={COLORS.black30} />
       <Image source={icSearch} />
       <Text style={styles.title}>{TEXTS.title}</Text>
       <Text style={styles.subTitle}>{filteredBooks.length ? TEXTS.subTitle : TEXTS.error}</Text>
