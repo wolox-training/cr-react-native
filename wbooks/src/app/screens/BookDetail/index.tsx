@@ -7,6 +7,7 @@ import Information from '@screens/BookDetail/components/Information';
 import { COMMENTS_MOCK } from '@constants/mockComments';
 import TableComments from '@screens/BookDetail/components/TableComments';
 import Comment from '@interfaces/comment';
+import { COLORS } from '@constants/colors';
 
 import styles from './styles';
 
@@ -35,7 +36,7 @@ const BookDetail = ({ route }: Props) => {
 
   return (
     <>
-      <StatusBar animated backgroundColor="rgba(0, 0, 0, 0.7)" />
+      <StatusBar animated backgroundColor={COLORS.black30} />
       <FlatList
         style={styles.container}
         ListHeaderComponentStyle={styles.header}

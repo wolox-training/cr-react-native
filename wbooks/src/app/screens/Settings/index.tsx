@@ -1,3 +1,4 @@
+import { COLORS } from '@constants/colors';
 import React from 'react';
 import { View, Text, StatusBar, Image } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -17,7 +18,7 @@ const Settings = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar animated backgroundColor="rgba(0, 0, 0, 0.7)" />
+      <StatusBar animated backgroundColor={COLORS.black30} />
       <View style={styles.profile}>
         <Text style={styles.title}>Profile</Text>
         <Image source={imgUser} style={styles.imageProfile} />
