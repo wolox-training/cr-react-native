@@ -9,7 +9,7 @@ interface Props {
   onPressBtn?: () => void;
 }
 
-const Information = ({ solid = true, text, onPressBtn }: Props) => {
+const Button = ({ solid = true, text, onPressBtn }: Props) => {
   return (
     <TouchableOpacity style={solid ? styles.btnSolid : styles.btnHollow} onPress={onPressBtn}>
       <Text style={solid ? styles.btnTextSolid : styles.btnTextHollow}>{text}</Text>
@@ -17,4 +17,4 @@ const Information = ({ solid = true, text, onPressBtn }: Props) => {
   );
 };
 
-export default Information;
+export default Button;

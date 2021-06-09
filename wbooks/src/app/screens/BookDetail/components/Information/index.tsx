@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, Image, Animated } from 'react-native';
+import { View, Text, Image, Animated, TouchableOpacity } from 'react-native';
 import bcInicio from '@assets/General/bc_inicio.png';
 import Button from '@components/Button';
+import Gradient from '@app/components/Gradient';
 import icMyrentals from '@assets/ToolBar/ic_myrentals.png';
 
 import styles from './styles';
@@ -45,7 +46,9 @@ const Information = ({ title, author, imageUrl, year, genre }: Props) => {
           <Image style={styles.successImage} source={icMyrentals} />
         </Animated.View>
       ) : (
-        <Button text={'RENT'} onPressBtn={onRent} />
+        <TouchableOpacity onPress={onRent}>
+          <Gradient text={'RENT'} />
+        </TouchableOpacity>
       )}
     </View>
   );
