@@ -2,6 +2,8 @@ import { StyleSheet, ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { COLORS } from '@constants/colors';
 import { SIZE } from '@constants/fonts';
 
+const IMGSIZE = 17;
+
 interface Styles {
   bookCard: ViewStyle;
   dataContainer: ViewStyle;
@@ -9,6 +11,8 @@ interface Styles {
   detailImageBook: ImageStyle;
   title: TextStyle;
   subTitle: TextStyle;
+  successBtn: ViewStyle;
+  successImage: ImageStyle;
 }
 
 export default StyleSheet.create<Styles>({
@@ -37,5 +41,18 @@ export default StyleSheet.create<Styles>({
   },
   subTitle: {
     fontSize: SIZE.normal
+  },
+  successBtn: {
+    marginTop: 20,
+    alignSelf: 'center',
+    backgroundColor: COLORS.green,
+    alignItems: 'center',
+    borderRadius: 20,
+    padding: 5
+  },
+  successImage: {
+    height: IMGSIZE,
+    width: IMGSIZE,
+    resizeMode: 'stretch'
   }
 });
