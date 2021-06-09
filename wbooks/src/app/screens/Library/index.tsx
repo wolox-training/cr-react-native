@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import BookList from '@components/BookList/index';
 import Book from '@interfaces/book';
 import { useDispatch, useSelector } from 'react-redux';
 import actionCreators from '@redux/book/actions';
+import { COLORS } from '@constants/colors';
 
 import styles from './styles';
 
@@ -21,6 +22,7 @@ const Library = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar animated backgroundColor={COLORS.black30} />
       <BookList books={books} />
     </View>
   );
